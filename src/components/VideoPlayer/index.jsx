@@ -1,32 +1,56 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
+import clsx from 'clsx';
+import VideoPlayerActions from './VideoPlayerActions';
 
-const SRC = 'https://www.pexels.com/video/2499611/';
+const SRC =
+  'https://videos.pexels.com/video-files/2499611/2499611-hd_1080_1920_30fps.mp4';
 
-export default function VideoPlayer() {
+export default function VideoPlayer({ src }) {
   const [playing, setPlaying] = useState(false);
-  const video = useRef();
+  const video = useRef(null);
 
+  /* useEffect(() => {
+    console.log(video);
+
+    fetch(video.current.src);
+    video.current.load();
+  }, [video]);
+ */
   const handlePlay = () => {
-    playing ? video.current.pause() : video.current.play();
+    const { current: videoEl } = video;
+    /*     let playPromise = videoEl.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then((_) => {
+          videoEl.pause();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } */
+
+    playing ? videoEl.pause() : videoEl.play();
 
     setPlaying(!playing);
   };
 
   const playerClassName = clsx(styles.player, {
-    [styles.hidden]: !playing,
+    [styles.hidden]: playing,
   });
 
   return (
-    <div>
+    <div className={styles.wrapper} onClick={handlePlay}>
       <video
-        onClick={handlePlay}
         ref={video}
         className={styles.video}
+        loop
         controls={false}
-        src="https://videos.pexels.com/video-files/2499611/2499611-hd_1080_1920_30fps.mp4"
+        src={src}
       />
       <i className={playerClassName} />
+      <VideoPlayerActions />
     </div>
   );
 }

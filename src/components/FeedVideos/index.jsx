@@ -9,7 +9,7 @@ const VIDEOS = [
     likes: 123,
     shares: 234,
     comments: 1,
-    songtitle: 'At the risk of feeling dumb',
+    songTitle: 'At the risk of feeling dumb',
     albumCover:
       'https://www.lahiguera.net/musicalia/artistas/twenty_one_pilots/disco/13381/twenty_one_pilots_clancy-portada.jpg',
     src: 'https://videos.pexels.com/video-files/2499611/2499611-hd_1080_1920_30fps.mp4',
@@ -21,10 +21,10 @@ const VIDEOS = [
     likes: 234,
     shares: 14,
     comments: 4,
-    songtitle: 'At the risk of feeling dumb',
+    songTitle: 'At the risk of feeling dumb',
     albumCover:
       'https://www.lahiguera.net/musicalia/artistas/twenty_one_pilots/disco/13381/twenty_one_pilots_clancy-portada.jpg',
-    src: 'https://videos.pexels.com/video-files/6060027/6060027-hd_1080_1920_25fps.mp4',
+    src: 'https://videos.pexels.com/video-files/19190552/19190552-hd_1080_1920_30fps.mp4',
   },
 ];
 

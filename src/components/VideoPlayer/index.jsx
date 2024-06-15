@@ -2,11 +2,18 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import VideoPlayerActions from './VideoPlayerActions';
+import VideoDescription from './VideoDescription';
 
 const SRC =
   'https://videos.pexels.com/video-files/2499611/2499611-hd_1080_1920_30fps.mp4';
 
-export default function VideoPlayer({ src }) {
+export default function VideoPlayer({
+  src,
+  author,
+  albumCover,
+  description,
+  songTitle,
+}) {
   const [playing, setPlaying] = useState(false);
   const video = useRef(null);
 
@@ -51,6 +58,12 @@ export default function VideoPlayer({ src }) {
       />
       <i className={playerClassName} />
       <VideoPlayerActions />
+      <VideoDescription
+        albumCover={albumCover}
+        author={author}
+        description={description}
+        songTitle={songTitle}
+      />
     </div>
   );
 }

@@ -14,3 +14,7 @@ main {
   display: block;
   height: auto;
 }
+
+p {
+  margin: 5px 0;
+}

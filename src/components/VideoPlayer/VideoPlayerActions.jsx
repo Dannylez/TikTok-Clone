@@ -1,18 +1,28 @@
 import styles from './styles.module.css';
 import { Heart } from '../Icons/Heart';
+import { Comments } from '../Icons/Comments';
+import { Shares } from '../Icons/Shares';
 
-export default function VideoPlayerActions() {
+export default function VideoPlayerActions({
+  likes = 12,
+  comments = 23,
+  shares = 2,
+  hearted = false,
+}) {
   return (
     <aside className={styles.actions}>
-      <div className={styles.action}>
+      <button className={styles.actionButton}>
         <Heart />
-      </div>
-      <div className={styles.action}>
-        <Heart />
-      </div>
-      <div className={styles.action}>
-        <Heart />
-      </div>
+        <span title='likes'>{likes}</span>
+      </button>
+      <button className={styles.actionButton}>
+        <Comments />
+        <span title='comments'>{comments}</span>
+      </button>
+      <button className={styles.actionButton}>
+        <Shares />
+        <span title='shares'>{shares}</span>
+      </button>
     </aside>
   );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import VideoPlayerActions from './VideoPlayerActions';
-import VideoDescription from './VideoDescription';
+import VideoDescription from '../VideoDescription';
 
 const SRC =
   'https://videos.pexels.com/video-files/2499611/2499611-hd_1080_1920_30fps.mp4';

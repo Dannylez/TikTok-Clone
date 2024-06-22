@@ -1,0 +1,101 @@
+
+.footer {
+    position: absolute;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 0 5%;
+    justify-content: space-between;
+    bottom: 0;
+    z-index: 1;
+    background-color: transparent;
+    font-size: 13px;
+}
+
+.author {
+    font-weight: 600;
+    font-size: 17px;
+    text-decoration: none;
+    color: white;
+}
+
+.text {
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+.song {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.musicIcon {
+    width: 15px;
+    height: 15px;
+    z-index: 3;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-image: url('https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/tiktok/webapp/main/webapp-mobile/1f379b351b5c1d53e1a9.png');
+}
+
+.container{
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.songTitle1 {
+    position: absolute;
+    animation: slide1 5s infinite linear;
+}
+
+.songTitle2 {
+    padding-left: 5%;
+    animation: slide2 5s infinite linear;
+}
+
+.album {
+    display: flex;
+    align-items: flex-end;
+}
+
+.albumCover {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    align-self: flex-end;
+    animation: rotate 10s infinite linear;
+    border: 5px solid rgb(59, 59, 59);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slide1 {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-105%);
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-5%);
+    }
+}

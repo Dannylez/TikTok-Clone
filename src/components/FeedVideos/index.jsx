@@ -12,7 +12,7 @@ const VIDEOS = [
     songTitle: 'At the risk of feeling dumb',
     albumCover:
       'https://www.lahiguera.net/musicalia/artistas/twenty_one_pilots/disco/13381/twenty_one_pilots_clancy-portada.jpg',
-    src: 'https://videos.pexels.com/video-files/2499611/2499611-hd_1080_1920_30fps.mp4',
+    src: 'https://videos.pexels.com/video-files/25560545/11902689_1440_2560_60fps.mp4',
   },
   {
     id: 2,

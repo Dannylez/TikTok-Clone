@@ -5,11 +5,11 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    padding: 0 5%;
+    padding: 2% 5%;
     justify-content: space-between;
     bottom: 0;
     z-index: 1;
-    background-color: transparent;
+    /* background-color: rgba(0, 0, 0, 0.2); */
     font-size: 13px;
 }
 
@@ -25,11 +25,17 @@
     font-size: 15px;
 }
 
-.song {
+.songInfo {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
+}
+
+.song {
+    display: flex;
+    align-items: center;
+    gap: 5%
 }
 
 .musicIcon {
@@ -44,23 +50,25 @@
 .container{
     display: flex;
     position: relative;
+    width: 50vw;
     overflow: hidden;
     white-space: nowrap;
 }
 
 .songTitle1 {
-    position: absolute;
-    animation: slide1 5s infinite linear;
+/*     position: absolute;
+    animation: slide1 5s infinite linear; */
+    width: 25vw
 }
 
 .songTitle2 {
     padding-left: 5%;
     animation: slide2 5s infinite linear;
+    width: 25vw
 }
 
 .album {
-    display: flex;
-    align-items: flex-end;
+    justify-self: end;
 }
 
 .albumCover {

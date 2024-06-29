@@ -18,11 +18,14 @@ export default function VideoDescription({
         </strong>
         <p className={styles.text}>{description}</p>
       </div>
-      <div className={styles.song}>
-        <div className={styles.musicIcon}></div>
-        <div className={styles.container}>
-          <p className={styles.songTitle1}>{songTitle}</p>
-          <p className={styles.songTitle2}>{songTitle}</p>
+      <div className={styles.songInfo}>
+        <div className={styles.song}>
+          <div className={styles.musicIcon}></div>
+          <marquee className={styles.songTitle1}>{songTitle}</marquee>
+          {/* <div className={styles.container}>
+            <p className={styles.songTitle1}>{songTitle}</p>
+            <p className={styles.songTitle2}>{songTitle}</p>
+          </div> */}
         </div>
         <div className={styles.album}>
           <AlbumDisk albumCover={albumCover} />

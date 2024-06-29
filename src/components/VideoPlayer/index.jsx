@@ -3,45 +3,19 @@ import styles from './styles.module.css';
 import clsx from 'clsx';
 import VideoPlayerActions from './VideoPlayerActions';
 import VideoDescription from '../VideoDescription';
-
-const SRC =
-  'https://videos.pexels.com/video-files/2499611/2499611-hd_1080_1920_30fps.mp4';
+import useIntersectionVideoPlayer from '../../hooks/useIntersectionVideoPlayer';
 
 export default function VideoPlayer({
   src,
-  author,
-  albumCover,
+  users,
+  songs,
   description,
-  songTitle,
+  likes,
+  comments,
+  shares,
 }) {
-  const [playing, setPlaying] = useState(false);
   const video = useRef(null);
-
-  /* useEffect(() => {
-    console.log(video);
-
-    fetch(video.current.src);
-    video.current.load();
-  }, [video]);
- */
-  const handlePlay = () => {
-    const { current: videoEl } = video;
-    /*     let playPromise = videoEl.play();
-
-    if (playPromise !== undefined) {
-      playPromise
-        .then((_) => {
-          videoEl.pause();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    } */
-
-    playing ? videoEl.pause() : videoEl.play();
-
-    setPlaying(!playing);
-  };
+  const { playing, handlePlay } = useIntersectionVideoPlayer({ video });
 
   const playerClassName = clsx(styles.player, {
     [styles.hidden]: playing,
@@ -57,12 +31,18 @@ export default function VideoPlayer({
         src={src}
       />
       <i className={playerClassName} />
-      <VideoPlayerActions />
+      <VideoPlayerActions
+        likes={likes}
+        comments={comments}
+        shares={shares}
+        avatar={users.avatar}
+        username={users.username}
+      />
       <VideoDescription
-        albumCover={albumCover}
-        author={author}
+        albumCover={songs.cover}
+        author={users.username}
         description={description}
-        songTitle={songTitle}
+        songTitle={songs.title}
       />
     </div>
   );

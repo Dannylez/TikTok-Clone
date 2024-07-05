@@ -1,0 +1,91 @@
+.upload {
+    background: #fff;
+    min-height: 100vh;
+    padding: 16px
+}
+
+.title {
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #666;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-weight: bold;
+    display: block;
+    width: 100%;
+}
+
+.input {
+    display: block;
+    padding: 4px;
+    line-height: 18px;
+    border-radius: 2px;
+    border: 1px solid #666;
+    margin-top: 14px;
+    font-weight: 400;
+    width: 100%;
+}
+
+.form > * {
+    margin-bottom: 16px;
+}
+
+.dnd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 85vw;
+    border-radius: 5px;
+    color: #888;
+    font-size: 0.8rem;
+    background-color: #f0f0f0;
+    padding: 36px 18px;
+    aspect-ratio: 9/16;
+    transition: background-color 1s ease;
+}
+
+.dndReject {
+    background-color: rgb(255, 202, 202);
+}
+
+.dndAccept {
+    background-color: rgb(206, 255, 202);
+}
+
+.dndDisabled {
+    background-color: #333;
+}
+
+.dnd h4 {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 0 0 16px;
+}
+
+.dnd h5 {
+    color: #888;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.button {
+    border: 1px solid #666;
+    border-radius: 5px;
+    width: 40vw;
+    height: 30px;
+    background-color: rgb(206, 255, 202);
+}

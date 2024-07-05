@@ -4,6 +4,7 @@ import { UploadCloud } from '../../components/Icons/UploadCloud';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { publishVideo, uploadVideo } from '../../services';
+import { Link, Redirect } from 'wouter';
 
 export default function Upload() {
   const [uploading, setUploading] = useState(false);
@@ -93,6 +94,10 @@ export default function Upload() {
 
         <button className={styles.button}>Publicar</button>
       </form>
+      <Link to='/'>
+        {' '}
+        <button>Volver</button>
+      </Link>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Heart } from '../Icons/Heart';
 import { Comments } from '../Icons/Comments';
 import { Shares } from '../Icons/Shares';
 import { Follow } from '../Icons/Follow';
+import { Link } from 'wouter';
 
 export default function VideoPlayerActions({
   likes,
@@ -25,14 +26,18 @@ export default function VideoPlayerActions({
         <Heart />
         <span title='likes'>{likes}</span>
       </button>
+
       <button className={styles.actionButton}>
         <Comments />
         <span title='comments'>{comments}</span>
       </button>
-      <button className={styles.actionButton}>
-        <Shares />
-        <span title='shares'>{shares}</span>
-      </button>
+      <Link to='/upload'>
+        {' '}
+        <button className={styles.actionButton}>
+          <Shares />
+          <span title='shares'>{shares}</span>
+        </button>
+      </Link>
     </aside>
   );
 }

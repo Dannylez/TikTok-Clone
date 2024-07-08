@@ -1,6 +1,8 @@
 
 .footer {
-    position: absolute;
+    position: relative;
+    top: -20vh;
+    height: 18vh;
     color: white;
     display: flex;
     flex-direction: column;
@@ -9,8 +11,12 @@
     justify-content: space-between;
     bottom: 0;
     z-index: 1;
-    /* background-color: rgba(0, 0, 0, 0.2); */
     font-size: 13px;
+    text-shadow: 
+        -0.8px -0.8px 0 #000,  
+         0.8px -0.8px 0 #000,
+        -0.8px  0.8px 0 #000,
+         0.8px  0.8px 0 #000; 
 }
 
 .author {

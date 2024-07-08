@@ -29,7 +29,7 @@ if(!video.current) return
     };
   }, [video.current]);
 
-  const handlePlay = () => {
+  const handlePlay = (e) => {
     const { current: videoEl } = video;
     playing ? videoEl.pause() : videoEl.play();
 

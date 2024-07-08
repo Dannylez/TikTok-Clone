@@ -6,13 +6,14 @@ import VideoDescription from '../VideoDescription';
 import useIntersectionVideoPlayer from '../../hooks/useIntersectionVideoPlayer';
 
 export default function VideoPlayer({
-  src,
+  videoInfo,
+  /* src,
   users,
   songs,
   description,
   likes,
   comments,
-  shares,
+  shares, */
 }) {
   const video = useRef(null);
   const { playing, handlePlay } = useIntersectionVideoPlayer({ video });
@@ -28,21 +29,22 @@ export default function VideoPlayer({
         className={styles.video}
         loop
         controls={false}
-        src={src}
+        src={videoInfo.src}
       />
       <i className={playerClassName} />
       <VideoPlayerActions
-        likes={likes}
+        videoInfo={videoInfo}
+        /* likes={videoInfo.likes}
         comments={comments}
         shares={shares}
         avatar={users.avatar}
-        username={users.username}
+        username={users.username} */
       />
       <VideoDescription
-        albumCover={songs.cover}
-        author={users.username}
-        description={description}
-        songTitle={songs.title}
+        albumCover={videoInfo.songs.cover}
+        author={videoInfo.users.username}
+        description={videoInfo.description}
+        songTitle={videoInfo.songs.title}
       />
     </div>
   );

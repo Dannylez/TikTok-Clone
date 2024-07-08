@@ -46,7 +46,7 @@ export default function FeedVideos() {
   return videos.map((video) => {
     return (
       <div key={video.id} className={styles.item}>
-        <VideoPlayer {...video} />
+        <VideoPlayer videoInfo={video} />
       </div>
     );
   });

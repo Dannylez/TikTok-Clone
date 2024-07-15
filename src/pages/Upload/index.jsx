@@ -23,6 +23,10 @@ export default function Upload() {
       setErrorMessage('');
       setUploading(true);
       const [error, fileUrl] = await uploadVideo({ videoFile: file });
+      if (error) {
+        setUploading(false);
+        return setErrorMessage(error.message);
+      }
       setFileUrl(fileUrl);
       setUploading(false);
       setUploaded(true);
@@ -63,7 +67,7 @@ export default function Upload() {
         <ul>
           <li>MP4 o WebM</li>
           <li>Resolución de al menos 720x1280</li>
-          <li>Hasta 180 segundos</li>
+          <li>Hasta 50MB</li>
         </ul>
       </>
     );

@@ -1,5 +1,5 @@
 export const Follow = () => (
-  <svg width='40' height='40' viewBox='-14 0 56 56' fill='none'>
+  <svg width='35' height='35' viewBox='-14 0 56 56' fill='none'>
     <path
       fillRule='evenodd'
       clipRule='evenodd'

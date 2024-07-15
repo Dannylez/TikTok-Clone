@@ -32,13 +32,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    bottom: 80px;
+    bottom: 20vh;
     right: 10px;
 }
 
 .actionButton {
     background: transparent;
-    margin-bottom: 15px;
     border: none;
     color: white;
     display: flex;

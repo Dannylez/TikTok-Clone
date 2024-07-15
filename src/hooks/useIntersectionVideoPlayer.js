@@ -13,7 +13,7 @@ const options = {
     });
   }, options);
 
-  export default function useIntersectionVideoPlayer ({video}) {
+  export default function useIntersectionVideoPlayer ({video, audio}) {
     const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
@@ -22,17 +22,32 @@ if(!video.current) return
     observer.observe(video.current);
     video.current._handleIntersect = (isIntersecting) => {
       const { current: videoEl } = video;
+      const audioEl = audio?.current
 
-      isIntersecting ? videoEl.play() : videoEl.pause();
-
+      if (isIntersecting)  
+        {videoEl.play(); 
+            if (audioEl) 
+                {audioEl.play();audioEl.volume = 0.2;}
+            videoEl.volume = 1
+        } 
+      else 
+        {videoEl.pause(); audioEl?.pause();
+}
       setPlaying(!videoEl.paused);
     };
   }, [video.current]);
 
   const handlePlay = (e) => {
     const { current: videoEl } = video;
-    playing ? videoEl.pause() : videoEl.play();
+    let audioEl
+    if (audio) 
+        {audioEl= audio.current}
 
+    if (!playing)  
+      {videoEl.play(); audioEl?.play()} 
+    else 
+      {videoEl.pause(); audioEl?.pause();
+}
     setPlaying(!playing);
   }
 

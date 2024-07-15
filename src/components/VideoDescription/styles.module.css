@@ -1,8 +1,9 @@
 
 .footer {
     position: relative;
-    top: -20vh;
-    height: 18vh;
+    top: -25vh;
+    min-height: 15vh;
+    max-height: 20vh;
     color: white;
     display: flex;
     flex-direction: column;
@@ -29,6 +30,7 @@
 .text {
     margin-top: 4px;
     font-size: 15px;
+    width: 85%;
 }
 
 .songInfo {
@@ -56,21 +58,18 @@
 .container{
     display: flex;
     position: relative;
-    width: 50vw;
+    /* width: 50vw; */
     overflow: hidden;
     white-space: nowrap;
 }
 
 .songTitle1 {
-/*     position: absolute;
-    animation: slide1 5s infinite linear; */
-    width: 25vw
+    position: absolute;
+    animation: slide1 5s infinite linear;
 }
 
 .songTitle2 {
-    padding-left: 5%;
     animation: slide2 5s infinite linear;
-    width: 25vw
 }
 
 .album {
@@ -101,7 +100,7 @@
         transform: translateX(0%);
     }
     100% {
-        transform: translateX(-105%);
+        transform: translateX(-100%);
     }
 }
 
@@ -110,6 +109,6 @@
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-5%);
+        transform: translateX(-0%);
     }
 }

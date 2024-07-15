@@ -4,13 +4,14 @@ import { UploadCloud } from '../../components/Icons/UploadCloud';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { publishVideo, uploadVideo } from '../../services';
-import { Link, Redirect } from 'wouter';
+import { useLocation } from 'wouter';
 
 export default function Upload() {
   const [uploading, setUploading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [fileUrl, setFileUrl] = useState('');
+  const [, navigate] = useLocation();
 
   const onDrop = async (files) => {
     const [file] = files;
@@ -68,11 +69,12 @@ export default function Upload() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!uploaded) return;
     const description = e.target.description.value;
-    publishVideo(description, fileUrl);
+    await publishVideo(description, fileUrl);
+    navigate('/');
   };
 
   return (
@@ -94,10 +96,6 @@ export default function Upload() {
 
         <button className={styles.button}>Publicar</button>
       </form>
-      <Link to='/'>
-        {' '}
-        <button>Volver</button>
-      </Link>
     </div>
   );
 }

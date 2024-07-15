@@ -16,21 +16,39 @@ export default function VideoPlayer({
   shares, */
 }) {
   const video = useRef(null);
-  const { playing, handlePlay } = useIntersectionVideoPlayer({ video });
+  const audio = useRef(null);
+  const { playing, handlePlay } = useIntersectionVideoPlayer({ video, audio });
 
   const playerClassName = clsx(styles.player, {
     [styles.hidden]: playing,
   });
+
+  const handleEnded = () => {
+    const videoEl = video.current;
+    const audioEl = audio?.current;
+    if (audioEl) {
+      audioEl.currentTime = 0;
+      audioEl.play();
+    }
+    videoEl.currentTime = 0;
+    videoEl.play();
+  };
+
+  /*   useEffect(() => {
+    video.current.addEventListener('ended', handleEnded);
+  }, []); */
 
   return (
     <div className={styles.wrapper} onClick={handlePlay}>
       <video
         ref={video}
         className={styles.video}
-        loop
+        /* loop */
         controls={false}
         src={videoInfo.src}
+        onEnded={() => handleEnded()}
       />
+      <audio ref={audio} src={videoInfo.songs.src}></audio>
       <i className={playerClassName} />
       <VideoPlayerActions
         videoInfo={videoInfo}

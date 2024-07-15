@@ -2,6 +2,7 @@ import './App.css';
 import { Route } from 'wouter';
 import FeedVideos from './components/FeedVideos/index.jsx';
 import Upload from './pages/Upload/index.jsx';
+import Footer from './components/Footer/index.jsx';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
           <Upload />
         </Route>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

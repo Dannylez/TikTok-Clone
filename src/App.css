@@ -2,8 +2,10 @@
   background: #000;
   height: 100vh;
   width: 100vw;
-  display: grid;
-  /* place-content: center; */
+/*   display: flex;
+  flex-direction: column;
+  gap: 15px; */
+  place-content: center;
 }
 
 main {
@@ -14,6 +16,8 @@ main {
   scroll-snap-type: y mandatory;
   display: flex;
   flex-direction: column;
+  gap: 15px;
+  justify-content: flex-start;
   align-items: center;
   
 }

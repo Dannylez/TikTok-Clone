@@ -1,3 +1,4 @@
 .item {
     scroll-snap-align: center;
+    object-fit: cover;
 }

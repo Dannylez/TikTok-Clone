@@ -5,16 +5,7 @@ import VideoPlayerActions from './VideoPlayerActions';
 import VideoDescription from '../VideoDescription';
 import useIntersectionVideoPlayer from '../../hooks/useIntersectionVideoPlayer';
 
-export default function VideoPlayer({
-  videoInfo,
-  /* src,
-  users,
-  songs,
-  description,
-  likes,
-  comments,
-  shares, */
-}) {
+export default function VideoPlayer({ videoInfo }) {
   const video = useRef(null);
   const audio = useRef(null);
   const { playing, handlePlay } = useIntersectionVideoPlayer({ video, audio });
@@ -34,30 +25,18 @@ export default function VideoPlayer({
     videoEl.play();
   };
 
-  /*   useEffect(() => {
-    video.current.addEventListener('ended', handleEnded);
-  }, []); */
-
   return (
     <div className={styles.wrapper} onClick={handlePlay}>
       <video
         ref={video}
         className={styles.video}
-        /* loop */
         controls={false}
         src={videoInfo.src}
         onEnded={() => handleEnded()}
       />
       <audio ref={audio} src={videoInfo.songs.src}></audio>
       <i className={playerClassName} />
-      <VideoPlayerActions
-        videoInfo={videoInfo}
-        /* likes={videoInfo.likes}
-        comments={comments}
-        shares={shares}
-        avatar={users.avatar}
-        username={users.username} */
-      />
+      <VideoPlayerActions videoInfo={videoInfo} />
       <VideoDescription
         albumCover={videoInfo.songs.cover}
         author={videoInfo.users.username}

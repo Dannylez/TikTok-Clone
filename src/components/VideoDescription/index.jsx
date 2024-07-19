@@ -8,7 +8,7 @@ export default function VideoDescription({
   songTitle,
 }) {
   return (
-    <footer className={styles.footer}>
+    <div className={styles.descriptionCard}>
       <div>
         <strong>
           <a className={styles.author} href={`/user/${author}`}>
@@ -21,7 +21,6 @@ export default function VideoDescription({
       <div className={styles.songInfo}>
         <div className={styles.song}>
           <div className={styles.musicIcon}></div>
-          {/* <marquee className={styles.songTitle1}>{songTitle}</marquee> */}
           <div className={styles.container}>
             <p className={styles.songTitle1}>
               {songTitle} &nbsp;&nbsp;&nbsp;&nbsp;
@@ -35,6 +34,6 @@ export default function VideoDescription({
           <AlbumDisk albumCover={albumCover} />
         </div>
       </div>
-    </footer>
+    </div>
   );
 }

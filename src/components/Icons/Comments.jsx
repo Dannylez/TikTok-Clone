@@ -1,5 +1,5 @@
 export const Comments = () => (
-  <svg width='40' height='40' viewBox='-4 -8 56 56' fill='none'>
+  <svg width='50' height='50' viewBox='-4 -8 56 56' fill='none'>
     <path
       fillRule='evenodd'
       clipRule='evenodd'

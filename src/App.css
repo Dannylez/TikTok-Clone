@@ -1,17 +1,16 @@
-.App {
+.app {
   background: #000;
   height: 100vh;
   width: 100vw;
-/*   display: flex;
+  display: flex;
   flex-direction: column;
-  gap: 15px; */
+  align-items: center;
   place-content: center;
 }
 
 main {
   border-radius: 3px;
-  width: 100vw;
-  height: 100vh;
+  max-width: 420px;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   display: flex;
@@ -19,7 +18,19 @@ main {
   gap: 15px;
   justify-content: flex-start;
   align-items: center;
-  aspect-ratio: 9/16;
+
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  height: 5vh;
+  background-color: black;
+  width: 100vw;
 }
 
 p {

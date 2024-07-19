@@ -1,13 +1,15 @@
 .video {
-    width: 100%;
-    aspect-ratio: 9/16;
+
+    max-width: 420px;
+    
 }
 
 .wrapper {
-    position: relative;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 .player {
@@ -39,17 +41,19 @@
 
 .actions {
     position: relative;
+    align-self: flex-end;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    bottom: 60vh;
+    align-items: flex-end;
+    bottom: 500px;
     z-index: 1;
-    left: 22vh;
+    right: 15px;
 }
 
 .actionButton {
     background: transparent;
     border: none;
+    padding-right: 2px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -70,7 +74,7 @@
 
 .avatarImg {
     border-radius: 100%;
-    width: 48px;
-    height: 48px;
+    width: 55px;
+    height: 55px;
     border: 1px solid white;
 }

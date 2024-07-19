@@ -6,7 +6,7 @@ import Footer from './components/Footer/index.jsx';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='app'>
       <main>
         <Route path='/'>
           <FeedVideos />
@@ -15,7 +15,7 @@ function App() {
           <Upload />
         </Route>
       </main>
-      <footer>
+      <footer className='footer'>
         <Footer />
       </footer>
     </div>

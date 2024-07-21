@@ -7,19 +7,15 @@ import { Link } from 'wouter';
 import { useEffect, useState } from 'react';
 import { addLike, getLikes, removeLike } from '../../services';
 
-export default function VideoPlayerActions({
-  videoInfo,
-  /* likes,
-  comments,
-  shares,
-  avatar,
-  username, */
-}) {
+export default function VideoPlayerActions({ videoInfo }) {
   const [listOfLikes, setListOfLikes] = useState([]);
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(videoInfo.likes);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
+    setUser(window.history.state.user);
+    console.log(window.history.state.user);
     getLikes().then(([error, data]) => {
       if (error) return;
       setListOfLikes(data);
@@ -28,23 +24,21 @@ export default function VideoPlayerActions({
 
   useEffect(() => {
     const isLiked = listOfLikes.find(
-      (item) =>
-        item.video_id === videoInfo.id && item.user_id === videoInfo.user_id
-    ); /*va a tener que ser el user logeado*/
+      (item) => item.video_id === videoInfo.id && item.user_id === user.id
+    );
     if (isLiked) {
       setLiked(true);
     }
   }, [listOfLikes]);
 
-  /* useEffect(() => {if}, [videoInfo.likes]) */
   const handleLikes = (e, videoInfo) => {
     e.stopPropagation();
     if (!liked) {
-      addLike(videoInfo.user_id, videoInfo.id, likes);
+      addLike(user.id, videoInfo.id, likes);
       setLikes(likes + 1);
       return setLiked(true);
     }
-    removeLike(videoInfo.user_id, videoInfo.id, likes);
+    removeLike(user.id, videoInfo.id, likes);
     setLikes(likes - 1);
     return setLiked(false);
   };
@@ -74,13 +68,11 @@ export default function VideoPlayerActions({
         <Comments />
         <span title='comments'>{videoInfo.comments}</span>
       </button>
-      <Link to='/upload'>
-        {' '}
-        <button className={styles.actionButton}>
-          <Shares />
-          <span title='shares'>{videoInfo.shares}</span>
-        </button>
-      </Link>
+
+      <button className={styles.actionButton}>
+        <Shares />
+        <span title='shares'>{videoInfo.shares}</span>
+      </button>
     </aside>
   );
 }

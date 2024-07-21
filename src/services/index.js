@@ -2,15 +2,6 @@ import {supabase} from './supabase'
 
 const prefix = import.meta.env.VITE_SUPABASE_STORAGE_URL
 
-/* export const uploadVideo = async ({videoFile}) => {
-    const filename= window.crypto.randomUUID()
-const {data, error} = await supabase.storage    
-    .from('videos')
-    .upload(`uploads/${filename}.mp4`, videoFile)
-    const file = data?.fullPath ? `${prefix}${data.fullPath}` : ''
-    return[error, file]
-} */
-
     export const uploadVideo = async ({ videoFile }) => {
       const MAX_SIZE_MB = 50;
       const MAX_DURATION_SECONDS = 30;
@@ -46,12 +37,12 @@ const {data, error} = await supabase.storage
       });
     };
 
-export const publishVideo = async (description, videoSrc) => {
+export const publishVideo = async (description, videoSrc, userId) => {
     const { data, error } = await supabase
     .from('videos')
     .insert([
         {
-        user_id:'a905c014-ae1f-47c6-b328-612facdf7b29', 
+        user_id: userId, 
         src: videoSrc, 
         song: '1', 
         description
@@ -106,4 +97,12 @@ export const removeLike = async (userId, videoId, videoLikes) => {
   .from('users_videos_likes')
   .delete()
   .match({'video_id': videoId, 'user_id': userId} )
+}
+
+export const getUsers = async () => {
+   let {data, error} = await supabase
+   .from('users')
+   .select('*')
+
+   return [error, data]
 }

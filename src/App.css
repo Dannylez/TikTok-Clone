@@ -15,7 +15,7 @@ main {
   scroll-snap-type: y mandatory;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5vh;
   justify-content: flex-start;
   align-items: center;
 

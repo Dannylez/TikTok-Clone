@@ -12,6 +12,11 @@ export default function Upload() {
   const [errorMessage, setErrorMessage] = useState('');
   const [fileUrl, setFileUrl] = useState('');
   const [, navigate] = useLocation();
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    setUser(window.history.state.user);
+  }, []);
 
   const onDrop = async (files) => {
     const [file] = files;
@@ -77,8 +82,8 @@ export default function Upload() {
     e.preventDefault();
     if (!uploaded) return;
     const description = e.target.description.value;
-    await publishVideo(description, fileUrl);
-    navigate('/');
+    await publishVideo(description, fileUrl, user.id);
+    navigate('/feed');
   };
 
   return (

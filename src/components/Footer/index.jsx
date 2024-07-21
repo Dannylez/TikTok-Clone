@@ -7,10 +7,10 @@ import { Link } from 'wouter';
 export default function Footer() {
   return (
     <div className={styles.footer}>
-      <Link to='/'>
+      <Link to='/feed' state={window.history.state}>
         <Home />
       </Link>
-      <Link to='/upload'>
+      <Link to='/upload' state={window.history.state}>
         {' '}
         <Add />
       </Link>

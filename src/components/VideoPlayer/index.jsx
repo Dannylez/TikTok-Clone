@@ -33,15 +33,20 @@ export default function VideoPlayer({ videoInfo }) {
         controls={false}
         src={videoInfo.src}
         onEnded={() => handleEnded()}
-      />
-      <audio ref={audio} src={videoInfo.songs.src}></audio>
+      ></video>
+      {videoInfo.songs ? (
+        <audio ref={audio} src={videoInfo.songs.src}></audio>
+      ) : (
+        ''
+      )}
       <i className={playerClassName} />
       <VideoPlayerActions videoInfo={videoInfo} />
       <VideoDescription
+        videoInfo={videoInfo} /* 
         albumCover={videoInfo.songs.cover}
         author={videoInfo.users.username}
         description={videoInfo.description}
-        songTitle={videoInfo.songs.title}
+        songTitle={videoInfo.songs.title} */
       />
     </div>
   );

@@ -15,7 +15,6 @@ export default function VideoPlayerActions({ videoInfo }) {
 
   useEffect(() => {
     setUser(window.history.state.user);
-    console.log(window.history.state.user);
     getLikes().then(([error, data]) => {
       if (error) return;
       setListOfLikes(data);

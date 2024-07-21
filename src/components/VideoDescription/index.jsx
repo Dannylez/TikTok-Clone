@@ -1,39 +1,41 @@
 import AlbumDisk from './AlbumDisk';
 import styles from './styles.module.css';
 
-export default function VideoDescription({
-  author,
-  description,
-  albumCover,
-  songTitle,
-}) {
+export default function VideoDescription({ videoInfo }) {
   return (
     <div className={styles.descriptionCard}>
       <div>
         <strong>
-          <a className={styles.author} href={`/user/${author}`}>
+          <a
+            className={styles.author}
+            href={`/user/${videoInfo.users.username}`}
+          >
             {' '}
-            @{author}
+            @{videoInfo.users.username}
           </a>
         </strong>
-        <p className={styles.text}>{description}</p>
+        <p className={styles.text}>{videoInfo.description}</p>
       </div>
-      <div className={styles.songInfo}>
-        <div className={styles.song}>
-          <div className={styles.musicIcon}></div>
-          <div className={styles.container}>
-            <p className={styles.songTitle1}>
-              {songTitle} &nbsp;&nbsp;&nbsp;&nbsp;
-            </p>
-            <p className={styles.songTitle2}>
-              {songTitle} &nbsp;&nbsp;&nbsp;&nbsp;
-            </p>
+      {videoInfo.songs ? (
+        <div className={styles.songInfo}>
+          <div className={styles.song}>
+            <div className={styles.musicIcon}></div>
+            <div className={styles.container}>
+              <p className={styles.songTitle1}>
+                {videoInfo.songs.title} &nbsp;&nbsp;&nbsp;&nbsp;
+              </p>
+              <p className={styles.songTitle2}>
+                {videoInfo.songs.title} &nbsp;&nbsp;&nbsp;&nbsp;
+              </p>
+            </div>
+          </div>
+          <div className={styles.album}>
+            <AlbumDisk albumCover={videoInfo.songs.cover} />
           </div>
         </div>
-        <div className={styles.album}>
-          <AlbumDisk albumCover={albumCover} />
-        </div>
-      </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .upload {
     background: #fff;
-    min-height: 93vh;
-    width: 90vw;
+    min-height: 95vh;
+    width: 90%;
     padding: 15px;
 }
 
@@ -9,12 +9,6 @@
     font-size: 40px;
     font-weight: 800;
     margin: 0 0 10px;
-}
-
-.subtitle {
-    font-size: 16px;
-    font-weight: 600;
-    color: #666;
 }
 
 .form {
@@ -42,7 +36,12 @@
     border: 1px solid #666;
     margin-top: 14px;
     font-weight: 400;
+    font-size: 16px;
     width: 100%;
+}
+
+.input option {
+    max-width: 200px;
 }
 
 .form > * {
@@ -83,9 +82,9 @@
 }
 
 .dnd h5 {
-    color: #888;
-    font-size: 0.9rem;
-    margin: 0;
+    color: #777;
+    font-size: 1.0rem;
+    margin-bottom: 15px;
 }
 
 .button {

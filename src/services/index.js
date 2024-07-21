@@ -9,7 +9,7 @@ const prefix = import.meta.env.VITE_SUPABASE_STORAGE_URL
       const fileSizeMB = videoFile.size / (1024 * 1024);
 
       if (fileSizeMB > MAX_SIZE_MB) {
-        return [new Error('El tamaño del video supera el límite permitido de 50 MB'), ''];
+        return [new Error('Your video excedes the weight limit (50MB) please, try with another'), ''];
       }
 
       const videoElement = document.createElement('video');
@@ -19,7 +19,7 @@ const prefix = import.meta.env.VITE_SUPABASE_STORAGE_URL
         videoElement.onloadedmetadata = async () => {
           const duration = videoElement.duration;
           if (duration > MAX_DURATION_SECONDS) {
-            return resolve([new Error('La duración del video supera el límite permitido de 30 segundos'), '']);
+            return resolve([new Error('Your video excedes the length limit (30 seconds) please, try with a shorter one'), '']);
           }
     
           const filename = window.crypto.randomUUID();
@@ -32,19 +32,19 @@ const prefix = import.meta.env.VITE_SUPABASE_STORAGE_URL
         };
     
         videoElement.onerror = () => {
-          resolve([new Error('Error al cargar los metadatos del video'), '']);
+          resolve([new Error('Error. Please, try again'), '']);
         };
       });
     };
 
-export const publishVideo = async (description, videoSrc, userId) => {
+export const publishVideo = async (description,song, videoSrc, userId) => {
     const { data, error } = await supabase
     .from('videos')
     .insert([
         {
         user_id: userId, 
         src: videoSrc, 
-        song: '1', 
+        song: song, 
         description
     }
     ])
@@ -105,4 +105,12 @@ export const getUsers = async () => {
    .select('*')
 
    return [error, data]
+}
+
+export const getSongs = async () => {
+  let {data, error} = await supabase
+  .from('songs')
+  .select('*')
+
+  return [error, data]
 }

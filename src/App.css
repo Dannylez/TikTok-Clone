@@ -10,6 +10,7 @@
 
 main {
   border-radius: 3px;
+  width: 100vw;
   max-width: 420px;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;

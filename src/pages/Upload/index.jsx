@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 import { UploadCloud } from '../../components/Icons/UploadCloud';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { publishVideo, uploadVideo } from '../../services';
+import { getSongs, publishVideo, uploadVideo } from '../../services';
 import { useLocation } from 'wouter';
 
 export default function Upload() {
@@ -13,9 +13,14 @@ export default function Upload() {
   const [fileUrl, setFileUrl] = useState('');
   const [, navigate] = useLocation();
   const [user, setUser] = useState({});
+  const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     setUser(window.history.state.user);
+    getSongs().then(([error, songs]) => {
+      if (error) return setError(error);
+      setSongs(songs);
+    });
   }, []);
 
   const onDrop = async (files) => {
@@ -60,19 +65,19 @@ export default function Upload() {
 
   const renderDndContent = () => {
     if (errorMessage) return <h4>{errorMessage}</h4>;
-    if (uploaded) return <h4> Archivo cargado con éxito!</h4>;
-    if (uploading) return <h4>Espere mientras su archivo se carga...</h4>;
-    if (isDragReject) return <h4>Archivo no soportado</h4>;
-    if (isDragAccept) return <h4> Suelta el archivo para subirlo!</h4>;
+    if (uploaded) return <h4> Video uploaded successfully!</h4>;
+    if (uploading) return <h4>Uploading your video, please wait...</h4>;
+    if (isDragReject) return <h4>File not supported</h4>;
+    if (isDragAccept) return <h4> Drop your video here!</h4>;
 
     return (
       <>
-        <h4>Selecciona el video para cargar</h4>
-        <h5>O arrastra y suelta un archivo</h5>
+        <h4>Select your video to upload</h4>
+        <h5>Or drag and drop it!</h5>
         <ul>
           <li>MP4 o WebM</li>
-          <li>Resolución de al menos 720x1280</li>
-          <li>Hasta 50MB</li>
+          <li>Max weigth: 50MB</li>
+          <li>Max length: 30 seconds</li>
         </ul>
       </>
     );
@@ -82,13 +87,16 @@ export default function Upload() {
     e.preventDefault();
     if (!uploaded) return;
     const description = e.target.description.value;
-    await publishVideo(description, fileUrl, user.id);
-    navigate('/feed');
+
+    const song = e.target.song.value ? e.target.song.value : null;
+
+    await publishVideo(description, song, fileUrl, user.id);
+    navigate('/feed', { state: window.history.state });
   };
 
   return (
     <div className={styles.upload}>
-      <h1 className={styles.title}>Cargar video</h1>
+      <h1 className={styles.title}>Upload video</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div {...getRootProps()}>
           <input name='video' {...getInputProps()} />
@@ -99,11 +107,22 @@ export default function Upload() {
         </div>
 
         <label className={styles.label}>
-          Descripción:
+          Description:
           <textarea name='description' className={styles.input}></textarea>
         </label>
+        <label className={styles.label}>
+          Song:
+          <select className={styles.input} name='song'>
+            <option value=''>None</option>
+            {songs.map((song) => (
+              <option key={song.id} value={song.id}>
+                {song.title}
+              </option>
+            ))}
+          </select>
+        </label>
 
-        <button className={styles.button}>Publicar</button>
+        <button className={styles.button}>Publish</button>
       </form>
     </div>
   );
